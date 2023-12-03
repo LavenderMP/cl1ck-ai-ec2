@@ -3,8 +3,21 @@ from fastapi import FastAPI, BackgroundTasks
 from pydantic import BaseModel
 from celery import Celery
 from leadprocessing import processLeads
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+origins = [
+    "*",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Celery configuration
 celery = Celery("tasks", broker="pyamqp://guest:guest@localhost//")
