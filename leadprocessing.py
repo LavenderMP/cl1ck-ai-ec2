@@ -111,7 +111,7 @@ def processLeads(experiment, receivedEmail='', personalized=True, filePath = Non
         else:
             leads_df = pd.read_csv(filePath, delimiter=";")
 
-        openai.api_key = "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"
+        openai.api_key = "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"
         if "Classified Loc" not in leads_df:
             leads_df["Classified Loc"] = ""
         if "Classified Role" not in leads_df:
